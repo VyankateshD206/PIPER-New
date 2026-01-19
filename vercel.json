@@ -1,0 +1,39 @@
+{
+  "version": 2,
+  "buildCommand": "cd next_web && npm install && npm run build",
+  "devCommand": "cd next_web && npm run dev",
+  "installCommand": "cd next_web && npm install",
+  "framework": "nextjs",
+  "outputDirectory": "next_web/.next",
+  "functions": {
+    "api/**/*.py": {
+      "runtime": "python3.9",
+      "maxDuration": 60
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/ml/:path*",
+      "destination": "/api/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
+  ]
+}
