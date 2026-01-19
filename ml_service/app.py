@@ -496,7 +496,9 @@ def _load_artifacts():
         raise RuntimeError(f"Scaler file not found: {SCALER_PATH}")
 
     loaded_model = MoodClassifier()
-    loaded_model.load_state_dict(torch.load(MODEL_PATH, map_location="cpu"))
+    loaded_model.load_state_dict(
+        torch.load(MODEL_PATH, map_location="cpu", weights_only=True)
+    )
     loaded_model.eval()
 
     model = loaded_model
