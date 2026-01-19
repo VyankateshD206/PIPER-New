@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .piper-btn {
+    @apply inline-flex h-11 items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold;
+    @apply transition duration-200 ease-out will-change-transform;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 focus-visible:ring-offset-0;
+    @apply disabled:pointer-events-none disabled:opacity-60;
+    @apply hover:scale-[1.02] active:scale-[0.99];
+  }
+
+  .piper-btn-primary {
+    @apply bg-linear-to-r from-emerald-400 via-emerald-500 to-cyan-300 text-black;
+    @apply shadow-[0_0_0_1px_rgba(16,185,129,0.30),0_14px_40px_rgba(16,185,129,0.20)];
+    @apply hover:brightness-105 hover:shadow-[0_0_0_1px_rgba(16,185,129,0.40),0_18px_55px_rgba(16,185,129,0.30)];
+  }
+
+  .piper-btn-secondary {
+    @apply border border-white/20 bg-white/5 text-white/90 backdrop-blur;
+    @apply shadow-[0_0_0_1px_rgba(255,255,255,0.05)];
+    @apply hover:bg-white/10 hover:border-white/30 hover:text-white;
+  }
+
+  .piper-card {
+    @apply rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl;
+    @apply shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_24px_80px_rgba(0,0,0,0.35)];
+    @apply transition duration-200 ease-out;
+  }
+
+  .piper-card-hover {
+    @apply will-change-transform;
+    @apply hover:-translate-y-0.5;
+    @apply hover:shadow-[0_0_0_1px_rgba(16,185,129,0.10),0_28px_90px_rgba(0,0,0,0.45)];
+  }
+
+  .piper-animate-in {
+    animation: piperFadeUp 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .piper-status-card {
+    @apply relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl;
+    @apply shadow-[0_0_0_1px_rgba(255,255,255,0.06),0_24px_80px_rgba(0,0,0,0.35)];
+    @apply transition duration-200 ease-out will-change-transform;
+    @apply hover:-translate-y-0.5;
+  }
+
+  .piper-status-card::before {
+    content: "";
+    @apply absolute inset-y-0 left-0 w-1;
+  }
+
+  .piper-status-green {
+    @apply border-emerald-400/25 bg-emerald-400/10;
+  }
+
+  .piper-status-green::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(16, 185, 129, 0.9),
+      rgba(34, 211, 238, 0.45)
+    );
+  }
+
+  .piper-status-yellow {
+    @apply border-yellow-400/25 bg-yellow-400/10;
+  }
+
+  .piper-status-yellow::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(250, 204, 21, 0.9),
+      rgba(251, 146, 60, 0.35)
+    );
+  }
+
+  @keyframes piperFadeUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .piper-animate-in {
+      animation: none;
+    }
+  }
+  .piper-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-white/65;
+  }
+
+  .piper-input {
+    @apply h-12 w-full rounded-full border border-white/15 bg-black/30 px-5 text-sm text-white;
+    @apply placeholder:text-white/35;
+    @apply outline-none transition;
+    @apply focus-visible:border-emerald-400/60 focus-visible:ring-2 focus-visible:ring-emerald-400/30;
+    @apply focus-visible:shadow-[0_0_0_1px_rgba(16,185,129,0.18),0_0_30px_rgba(16,185,129,0.18)];
+  }
+
+  .piper-select {
+    @apply h-12 w-full cursor-pointer rounded-full border border-white/15 bg-black/30 pl-5 pr-12 text-sm text-white;
+    @apply appearance-none outline-none transition;
+    @apply focus-visible:border-emerald-400/60 focus-visible:ring-2 focus-visible:ring-emerald-400/30;
+    @apply focus-visible:shadow-[0_0_0_1px_rgba(16,185,129,0.18),0_0_30px_rgba(16,185,129,0.18)];
+  }
+
+  /* Custom chevron so it stays perfectly centered (native select arrows vary by browser) */
+  .piper-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M6 8l4 4 4-4' stroke='rgba(236,253,245,0.75)' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.1rem center;
+    background-size: 18px 18px;
+  }
+}
+
+:root {
+  --background: #05070a;
+  --foreground: #ecfdf5;
+  --muted-foreground: rgba(236, 253, 245, 0.72);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #05070a;
+    --foreground: #ecfdf5;
+    --muted-foreground: rgba(236, 253, 245, 0.72);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  min-height: 100svh;
+}
+
+/* Landing hero: ambient waveform + floating tags */
+.piper-wave-track {
+  transform: translate3d(0, 0, 0);
+  animation: piperWavePan 10s ease-in-out infinite;
+}
+
+.piper-wave-line {
+  stroke-dasharray: 14 10;
+  animation: piperDash 9s linear infinite;
+  filter: drop-shadow(0 0 14px rgba(16, 185, 129, 0.28));
+}
+
+.piper-wave-glow {
+  opacity: 0.9;
+  filter: blur(0.3px);
+  animation: piperGlow 6.5s ease-in-out infinite;
+}
+
+.piper-scan {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(16, 185, 129, 0.09),
+    rgba(34, 211, 238, 0.06),
+    transparent
+  );
+  transform: translate3d(-25%, 0, 0);
+  animation: piperScan 12s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.piper-float-tag {
+  transform: translate3d(0, 0, 0);
+  animation: piperFloat 10.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes piperDash {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -160;
+    opacity: 0.85;
+  }
+}
+
+@keyframes piperWavePan {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-22px, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes piperGlow {
+  0% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 0.65;
+  }
+}
+
+@keyframes piperScan {
+  0% {
+    transform: translate3d(-35%, 0, 0);
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(35%, 0, 0);
+    opacity: 0.55;
+  }
+}
+
+@keyframes piperFloat {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piper-wave-track,
+  .piper-wave-line,
+  .piper-wave-glow,
+  .piper-scan,
+  .piper-float-tag {
+    animation: none !important;
+  }
+}
+
+@keyframes piperAnimateBackground {
+  0% {
+    /* Start near the top; drift to reveal lower parts (reads as upward motion) */
+    background-position: 50% 0%;
+  }
+  100% {
+    background-position: 50% 100%;
+  }
+}
+
+.piper-animated-bg {
+  background-image: url("https://t3.ftcdn.net/jpg/05/50/05/52/360_F_550055239_zK6qJTCOfodrftSLJM7bjcoUnF6lIl6Y.jpg");
+  /* Slightly oversized so vertical panning is noticeable */
+  background-size: 120% 120%;
+  background-position: 50% 0%;
+  background-repeat: no-repeat;
+  animation: piperAnimateBackground 90s linear infinite;
+  will-change: background-position;
+  position: relative;
+  isolation: isolate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .piper-animated-bg {
+    animation: none;
+  }
+
+  .piper-btn,
+  .piper-card,
+  .piper-card-hover,
+  .piper-status-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Dark overlay for readability across all pages (scoped to global body) */
+body.piper-animated-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      1200px 800px at 20% 10%,
+      rgba(16, 185, 129, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 700px at 80% 20%,
+      rgba(34, 211, 238, 0.1),
+      transparent 55%
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.82));
+}
+
+/* Ensure app content sits above the overlay */
+body.piper-animated-bg > * {
+  position: relative;
+  z-index: 1;
+}
