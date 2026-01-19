@@ -74,15 +74,15 @@ def _env_path(name: str, default_relative: str) -> str:
     value = os.environ.get(name)
     if value:
         return value
-    repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    return os.path.join(repo_root, default_relative)
+    # For local development from repo root
+    if os.path.exists(os.path.join("ml_service", "models")):
+        return os.path.join("ml_service", default_relative)
+    # For deployment (when ml_service is root directory)
+    return default_relative
 
 
-MODEL_PATH = _env_path(
-    "PIPER_MODEL_PATH",
-    os.path.join("ml_service", "models", "piper_model.pth"),
-)
-SCALER_PATH = _env_path("PIPER_SCALER_PATH", os.path.join("ml_service", "models", "scaler1.joblib"))
+MODEL_PATH = _env_path("PIPER_MODEL_PATH", "models/piper_model.pth")
+SCALER_PATH = _env_path("PIPER_SCALER_PATH", "models/scaler1.joblib")
 
 
 def _csv_path() -> str:
