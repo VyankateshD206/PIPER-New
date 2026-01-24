@@ -68,7 +68,7 @@ export function RequestAccessForm() {
 		<div className="piper-card piper-card-hover">
 			<h2 className="text-lg font-semibold text-white">Request Spotify access</h2>
 			<p className="mt-2 text-sm text-white/70">
-				Enter your email to request access.<br />
+				Enter your Spotify account email to request access.<br />
 Once approved, you’ll be able to connect Spotify and generate personalized playlists.
 			</p>
 

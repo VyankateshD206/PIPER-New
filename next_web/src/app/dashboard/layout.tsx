@@ -19,16 +19,15 @@ export default async function DashboardLayout({
 			<Suspense fallback={null}>
 				<SpotifyConnectionToast />
 			</Suspense>
-			<header className="border-b border-white/10 bg-black/40 backdrop-blur-xl supports-[backdrop-filter]:bg-black/25">
-				<div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
+			<div className="sticky top-16 z-40 overflow-hidden rounded-t-2xl border-b border-white/10 bg-black/40 backdrop-blur-xl supports-backdrop-filter:bg-black/25">
+				<div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 sm:px-6">
 					<div>
-						<p className="text-sm font-semibold text-white">Dashboard</p>
-						<p className="text-xs text-white/60">Invite-only (Spotify soon)</p>
+						<p className="text-lg font-semibold text-white">Dashboard</p>
 					</div>
-					<div className="flex items-center gap-3 text-xs">
+					<div className="flex items-center gap-3">
 						{isSpotifyConnected ? (
 							<>
-								<span className="rounded-full bg-emerald-500/15 px-3 py-1 font-semibold text-emerald-200 ring-1 ring-emerald-400/30">
+								<span className="rounded-full bg-emerald-500/15 px-3 py-1.5 text-xs font-semibold text-emerald-200 ring-1 ring-emerald-400/30">
 									Spotify Connected
 								</span>
 								<a
@@ -41,20 +40,20 @@ export default async function DashboardLayout({
 						) : hasEmail ? (
 							<a
 								href="/api/spotify/login?returnTo=/dashboard"
-								className="piper-btn piper-btn-primary h-9 px-4 text-xs"
+								className="piper-btn piper-btn-primary h-10 px-5 text-sm font-semibold shadow-lg shadow-emerald-500/25"
 							>
 								Connect Spotify
 							</a>
 						) : (
-							<span className="rounded-full bg-amber-500/15 px-3 py-1 font-semibold text-amber-300 ring-1 ring-amber-400/30">
+							<span className="rounded-full bg-amber-500/15 px-3 py-1.5 text-xs font-semibold text-amber-300 ring-1 ring-amber-400/30">
 								Enter email first
 							</span>
 						)}
 					</div>
 				</div>
-			</header>
+			</div>
 
-			<main className="mx-auto max-w-5xl px-6 py-10">
+			<main>
 				{children}
 			</main>
 		</div>

@@ -13,11 +13,10 @@ export default async function DashboardPage() {
 	const email = cookieStore.get('piper_email')?.value;
 	if (!email) {
 		return (
-			<div className="mx-auto max-w-3xl px-6 py-10">
+			<div className="mx-auto max-w-3xl px-6 py-8">
 				<div className="piper-animate-in">
-					<h1 className="text-2xl font-semibold text-white">Dashboard</h1>
-					<p className="mt-2 text-sm text-white/70">
-						Before we show anything here, request access with your email.
+					<p className="text-sm text-white/70">
+						Request access with your Spotify account email to get started.
 					</p>
 				</div>
 				<div className="mt-6 piper-animate-in" style={{ animationDelay: '80ms' }}>
@@ -61,10 +60,15 @@ export default async function DashboardPage() {
 		: [];
 
 	return (
-		<div className="mx-auto max-w-5xl px-6 py-10">
+		<div className="mx-auto max-w-5xl px-6 py-8">
 			<div className="piper-animate-in">
-				<h1 className="text-2xl font-semibold text-white">Dashboard</h1>
-				<p className="mt-2 text-sm text-white/70">Signed up as {email}</p>
+				<h1 className="text-3xl font-semibold text-white sm:text-4xl">
+					Welcome to{' '}
+					<span className="bg-linear-to-r from-emerald-300 via-emerald-400 to-cyan-300 bg-clip-text text-transparent">
+						PIPER
+					</span>
+				</h1>
+				<p className="mt-3 text-sm text-white/70">Signed up as <span className="font-medium text-white">{email}</span></p>
 			</div>
 
 			{isAllowlisted ? (
@@ -130,7 +134,7 @@ export default async function DashboardPage() {
 				<div className="mt-6 piper-animate-in" style={{ animationDelay: '80ms' }}>
 					<div className="piper-status-card piper-status-yellow">
 						<p className="text-sm font-semibold text-yellow-100">Pending allowlist</p>
-						<p className="mt-1 text-sm text-yellow-100/80">Your account will be activated in 5–10 mins.</p>
+						<p className="mt-1 text-sm text-yellow-100/80">Your account will be activated in 5–10 mins and you will be notified via email.</p>
 						<p className="mt-3 text-sm text-yellow-100/80">
 							Need to use a different email? Go back to the{' '}
 							<Link className="underline decoration-yellow-200/40 underline-offset-4 hover:decoration-yellow-200/70" href="/">
