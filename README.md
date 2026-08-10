@@ -4,6 +4,7 @@ PIPER is a personalized music recommendation platform that combines **machine le
 
 The system analyzes Spotify audio features and uses a trained **Artificial Neural Network (ANN)** to classify songs into different mood categories. Users can explore recommendations and create mood-based playlists directly in their Spotify account.
 
+![PIPER Logo](assets/piper_banner_img.png)
 ---
 
 ## ✨ Features
